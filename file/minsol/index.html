@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css">
+    @import url("https://use.typekit.net/rmw3byf.css");
+
+
+body, h1, h2, h3, p, ul, section, footer { margin: 0; padding: 0; overflow: hidden; }
+body { background-color: black; }
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.13vw; /* 3.6vh -> 2.13vw */
+  width: 13.12vw;
+}
+
+.line {
+  margin-top: 0.59vw; /* 1vh -> 0.59vw */
+  width: 100%;
+  height: 0.18vw; /* 0.3vh -> 0.18vw */
+  background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(109,109,109,1) 50%, rgba(0,0,0,1) 100%);
+}
+
+ .arrow {
+      position: fixed;  /* absolute에서 fixed로 변경 */
+      top: calc(32vw); 
+      transform: translateY(-50%);  /* 정확한 중앙 정렬 */
+      display: inline-block;
+      width: 6vw;
+      height:  6vw;
+      overflow: hidden;
+      vertical-align: middle;
+      cursor: pointer;  /* 클릭 가능함을 표시 */
+      z-index: 100;  /* 다른 요소들 위에 표시 */
+    }
+
+    .arrow.left {
+      left: 1vw;  /* 왼쪽 여백 */
+    }
+
+    .arrow.right {
+      right: 1vw;  /* 오른쪽 여백 */
+    }
+  .arrow:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.3vw;
+    height:1.3vw;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+  }
+  .arrow.left:before {
+    transform: translate(-50%, -50%) rotate(315deg);
+  }      
+  .arrow.right:before {
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+
+   .arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 4vw;
+  height: 4vw;
+  background-color: rgba(255, 255, 255, 0.2); /* 반투명 흰색 */
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* 화살표 뒤로 보내기 */
+}
+.arrow.left::after {
+    left: 44%;
+}
+
+.arrow.right::after {
+  right: -23%; 
+}
+  
+
+.box {
+  position: absolute;
+  margin-top: 2.72vw; /* 4.6vh -> 2.72vw */
+  margin-left: 6vw;
+  width: 45.27vw;
+  height: 43.69vw; /* 73.96vh -> 43.69vw */
+  border-radius: 20%;
+  background: rgb(214,216,217);
+  background: radial-gradient(circle at center 110%, rgba(214,216,217,1) 0%, rgba(63,63,63,1) 100%);
+  position: relative;
+  z-index: 0; /* z-index 추가 */
+}
+
+.title {
+  position: absolute;
+  top: 3.84vw;  /* 6.5vh -> 3.84vw */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.82vw;
+  font-family: "sofia-pro", sans-serif;
+  color: white;
+  font-weight: 300;
+}
+
+.des{
+  position: absolute;
+  top: 30.38vw; /* 51.5vh -> 30.38vw */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.16vw;
+  font-family: "sofia-pro", sans-serif;
+  color: #EFEFEF;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.5;
+  width: 30.64vw;
+  word-break: keep-all;
+  line-height: 1.58;
+}
+
+.box::after {
+  content: "Talk with Minsol";
+  font-size: 0.99vw;
+  font-family: "sofia-pro", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: white;
+  background: rgb(214,216,217);
+  background: radial-gradient(circle at center -110%, rgba(214,216,217,1) 0%, rgba(63,63,63,1) 100%);
+  position: absolute;
+  bottom: -4.11vw; /* -6.95vh -> -4.11vw */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4.11vw; /* 6.95vh -> 4.11vw */
+  width: 12.98vw;
+  border-bottom-left-radius: 1.2vw;
+  border-bottom-right-radius: 1.2vw;
+  animation: textBlink 2.5s infinite;
+}
+
+@keyframes textBlink {
+  0%, 80% {
+    color: white;
+  }
+  40% {
+    color: transparent;
+  }
+}
+
+.profile{
+  position: absolute;
+  top: 8.38vw; /* 14.2vh -> 8.38vw */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 19.5vw;
+  z-index: 1; /* z-index 추가 */
+}
+
+.fileb-container {
+  position: absolute;
+  right: 0vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10; /* 최상위로 설정 */
+}
+
+.fileb{
+  position: relative; /* relative로 변경 */
+  top: 6.15vw; /* 10.43vh -> 6.15vw */
+  right: 6vw;
+  width: 48.1vw;
+  z-index: 2; /* z-index 조정 */
+}
+
+.graph{
+  position: absolute; /* relative로 변경 */
+  top: 6.15vw; 
+  right: 6vw;
+  width: 48.1vw;
+  z-index: 3; /* z-index 조정 */
+  animation: grow 1.2s cubic-bezier(0, 0, 0.44, 0.84);
+  mix-blend-mode: overlay;
+}
+
+.graphdot{
+  position: absolute; /* relative로 변경 */
+  top: 6.15vw; /* 10.43vh -> 6.15vw */
+  right: 6vw;
+  width: 48.1vw;
+  z-index: 3; /* z-index 조정 */
+  animation: grow 1.2s cubic-bezier(0, 0, 0.44, 0.84);
+}
+
+
+.button {
+  position: absolute; 
+  top: 47.8vw; /* 80.9vh -> 47.8vw */
+  right: 19vw;
+  transform: translateX(-50%);
+  width: 10.09vw;
+  height: 3.5vw; /* 5.95vh -> 3.52vw */
+  background-color: white;
+  box-shadow: 0 0 12px rgba(0, 128, 163, 0.5);
+  font-family: "sofia-pro", sans-serif;
+  font-size: 1.46vw;
+  color: #828282;
+  font-weight: 300;
+  border-radius: 3vw;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+    @media screen and (max-width: 768px) {
+
+      .arrow {
+        top: 50%;  /* 모바일에서는 화면 중앙으로 */
+        transform: translateY(-50%);
+
+      }
+      
+      .arrow:before {
+    width: 2vw;
+    height:2vw;
+  }
+
+     body {
+        overflow-x: hidden;  /* 가로 스크롤 방지 */
+        overflow-y: auto;    /* 세로 스크롤 허용 */
+      } 
+
+      .box {
+        width: 67.9vw;
+        height: 65.54vw;
+        margin-left: 0;
+        position: absolute;  /* relative에서 다시 absolute로 변경 */
+        top: 0;  /* 새로 추가 */
+        margin-top: 10vw;  
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 1;  /* z-index 추가 */
+      }
+
+      .title {
+  position: absolute;
+  top: 5.76vw;  
+  font-size: 2.73vw;
+}
+
+.profile{
+  top: 12.57vw;
+  width: 29.25vw;
+  z-index: 1; /* z-index 추가 */
+}
+
+.des{
+  top: 45.57vw;
+  font-size: 1.74vw;
+ width: 45.96vw;
+}
+
+.box::after {
+  font-size: 1.485vw;
+  bottom: -6.165vw;
+  height: 6.125vw; 
+  width: 19.47vw;
+  border-bottom-left-radius: 1.8vw;
+  border-bottom-right-radius: 1.8vw;
+  cursor: pointer; 
+}
+
+      .fileb-container {
+    position: relative;
+    top: 0;  /* 48vw에서 0으로 변경 */
+    right: auto;
+    width: 100%;
+    margin-top: 90vw;  /* box 아래에 위치하도록 조정 */
+  }
+
+  .fileb {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 72.15vw;
+  }
+
+  .graph, .graphdot {
+    position: absolute;  /* relative에서 absolute로 변경 */
+    top: 0;
+    left: 50%;  /* right 대신 left 사용 */
+    transform: translateX(-50%);
+    width: 72.15vw;
+    animation: growMobile 1.2s cubic-bezier(0, 0, 0.44, 0.84);
+      }
+
+  .button {
+    top: auto;
+    bottom: 3vw;  /* 아래쪽으로 위치 조정 */
+    right: 50%;
+    transform: translateX(50%);
+    width: 15.13vw;
+    height: 5.25vw;
+    font-size: 2.19vw;
+  }
+
+  .logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.13vw; /* 3.6vh -> 2.13vw */
+  width: 16vw;
+}
+
+.line {
+  margin-top: 1vw; 
+  height: 0.3vw; /* 0.3vh -> 0.18vw */
+  background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(109,109,109,1) 50%, rgba(0,0,0,1) 100%);
+}
+}
+
+@media screen and (max-width: 480px) {
+
+  .arrow {
+        display: none;  /* 모바일에서 화살표 숨기기 */
+      }
+
+  .logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.13vw; /* 3.6vh -> 2.13vw */
+  width: 20vw;
+}
+
+.line {
+  margin-top: 0.5vw; 
+  height: 0.3vw; /* 0.3vh -> 0.18vw */
+  background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(109,109,109,1) 50%, rgba(0,0,0,1) 100%);
+
+}
+  
+
+}
+
+.animate-on-load {
+  animation: grow 1.2s cubic-bezier(0, 0, 0.44, 0.84);
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 모바일 애니메이션 */
+.animate-on-load-mobile {
+  animation: growMobile 1.2s cubic-bezier(0, 0, 0.44, 0.84);
+}
+
+@keyframes growMobile {
+  0% {
+    transform: translateX(-50%) scale(0);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <img onclick="window.location.href='../../index.html'" src="logo.png" class="logo"> 
+  <div class="line"></div>
+
+  <div class="fileb-container">
+    <img class="fileb" src="fileb.png">
+    <img class="graph" src="graph.png">
+    <img class="graphdot" src="graphdot.png">
+    <div class="button">BX/BI</div>
+  </div>
+
+  <div class="box">
+    <div class="title">Minsol Kim</div>
+    <img class="profile" src="profile.png" alt="profile">
+    <div class="des">
+      김민솔 디자이너는 독창적인 발상과 감각적이고 트렌디한 표현력으로 BX 디자인 분야에서 두드러진 실력을 발휘하는 디자이너입니다. 특히, 철저한 리서치와 디테일에 대한 꼼꼼한 접근으로 클라이언트와 협업자들의 신뢰를 얻는 핵심 인재입니다.
+    </div>
+  </div>
+
+   <div class="arrow left"  onclick="window.location.href='../sieon/index.html'"></div>
+  <div class="arrow right" onclick="window.location.href='../seula/index.html'"></div>
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    const profileImg = document.querySelector(".profile");
+
+    profileImg.addEventListener("click", function() {
+      const currentSrc = profileImg.getAttribute("src");
+      if (currentSrc.includes("profile-.png")) {
+        profileImg.setAttribute("src", currentSrc.replace("profile-.png", "profile.png"));
+      } else {
+        profileImg.setAttribute("src", currentSrc.replace("profile.png", "profile-.png"));
+      }
+    });
+    
+    // 애니메이션 관련 기존 코드
+    const graph = document.querySelector('.graph');
+    const graphdot = document.querySelector('.graphdot');
+    
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      graph.classList.add('animate-on-load-mobile');
+      graphdot.classList.add('animate-on-load-mobile');
+    } else {
+      graph.classList.add('animate-on-load');
+      graphdot.classList.add('animate-on-load');
+    }
+
+    // 스와이프 기능 추가
+    let touchstartX = 0;
+    let touchendX = 0;
+    const threshold = 50; // 스와이프 감지 임계값
+
+    document.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeDistance = touchendX - touchstartX;
+      
+      if (Math.abs(swipeDistance) > threshold) {  // 임계값보다 큰 경우에만 스와이프로 인정
+        if (swipeDistance > 0) {
+          // 오른쪽으로 스와이프 - 이전 페이지
+          window.location.href = '../sieon/index.html';
+        } else {
+          // 왼쪽으로 스와이프 - 다음 페이지
+          window.location.href = '../seula/index.html';
+        }
+      }
+    }
+
+    // box::after 클릭 이벤트 추가
+    const boxElement = document.querySelector('.box');
+    boxElement.addEventListener('click', function(e) {
+      // box::after 요소를 클릭했을 때만 이동
+      if (e.target === this && e.offsetY > this.offsetHeight) {
+        window.location.href = 'talk/index.html';
+      }
+    });
+  });
+</script>
+</html>
